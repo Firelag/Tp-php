@@ -1,3 +1,24 @@
+<?php require_once'../refactoring.php'; ?>
+<?php 
+    if(isset($_POST['add-post'])){
+        if(!empty($_FILES['image']['name'])){
+            $image_name = $_FILES['image']['name'];
+            $destination = "../images/$image_name";
+
+            $result =   move_uploaded_file($_FILES['image']['tmp_name'],$destination);
+            if ($result){
+                $_POST['image'] = $image_name;
+            }
+
+        }
+        $_POST['content'] = nl2br(htmlentities($_POST['content']));
+
+        create($_POST['author'],$_POST['title'],$_POST['content'],$_POST['image']);
+        header('Location: index.php');
+        exit();
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 

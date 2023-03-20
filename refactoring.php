@@ -16,10 +16,10 @@ function selectOne($id){
     return $post;
 }
 
-function create($authore,$title,$content,$image){
+function create($author,$title,$content,$image){
     global $pdo;
     $query =$pdo->prepare('INSERT INTO posts(author,title,content,image,created_at) VALUES(:auteur,:titre,:contenu,:image,NOW())');
-    $query->excute([
+    $query->execute([
         'auteur'=>$author,
         'titre'=>$title,
         'contenu'=>$content,

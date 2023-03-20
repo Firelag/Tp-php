@@ -35,8 +35,8 @@ $posts = selectALL();
             <!-- Admin Content -->
             <div class="admin-content">
                 <div class="button-group">
-                    <a href="create.html" class="btn btn-big">Ajouter un article</a>
-                    <a href="index.html" class="btn btn-big">Gérer des articles</a>
+                    <a href="create.php" class="btn btn-big">Ajouter un article</a>
+                    <a href="index.php" class="btn btn-big">Gérer des articles</a>
                 </div>
                 <div class="container">
                     <h2 class="page-title">Gestion des articles</h2>
