@@ -50,9 +50,9 @@ $posts = selectALL();
                         <tbody>
                             <?php foreach($posts as $key=>$post): ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Titre</td>
-                                    <td>Ronas</td>
+                                    <td><?= $key+1; ?></td>
+                                    <td><?= $post['title'] ?></td>
+                                    <td><?= $post['author'] ?></td>
                                     <td><a href="" class="edit">edit</a></td>
                                     <td><a href="" class="delete">delete</a></td>  
                                 </tr>
