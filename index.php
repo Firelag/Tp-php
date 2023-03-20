@@ -52,7 +52,7 @@
     </div>
     
     <!-- footer -->
-    <?php include('inc/footer.php'); ?> 
+    <?php include('inc/header.php'); ?> 
   <!-- // footer --> 
   <body>
   </html>

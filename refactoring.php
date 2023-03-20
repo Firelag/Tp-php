@@ -1,6 +1,21 @@
 <?php 
 require_once 'db.php';
 
+function ValidatePost($post){
+    $errors = array();
+    if(empty($post['author'])){
+        array_push($errors,'Veillez écrire votre nom');
+    }
+    if(empty($post['title'])){
+        array_push($errors,'Un titre est demandé');
+    }
+    if(empty($post['content'])){
+        array_push($errors,'Le corps de l\'article est demandé');
+    }
+    return $errors;
+
+}
+
 function selectALL(){
     global $pdo;
     $results = $pdo -> query('SELECT * FROM posts ORDER BY created_at DESC LIMIT 0,3');
