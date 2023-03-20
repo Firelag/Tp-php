@@ -55,7 +55,7 @@
                         </div>
                         
                         <div>
-                            <button type="submit" name="add-post" class="btn btn-big">Add Post</button>
+                            <button type="submit" name="add-post" class="btn btn-big">Ajout d'un article</button>
                         </div>
                     </form>
 
