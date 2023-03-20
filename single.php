@@ -1,16 +1,11 @@
 <?php
-  $id='';
-  if (isset($_GET['id']) && is_numeric($_GET['id'])){
-    $id =$_GET['id'];
-  }
-  if (empty($_GET['id'])){
-    die("L'article n'exsite pas");
-  }
-  require_once 'db.php';
+  require_once 'refactoring.php';
 
-  $query = $pdo->prepare('SELECT * FROM posts WHERE id= :post_id');
-  $query-> execute(array('post_id'=>$id));
-  $post = $query->fetch();
+  include_once('traitement.php');
+  $post = selectOne($id);
+  
+
+
 ?>
 
 <!DOCTYPE html>

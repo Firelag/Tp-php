@@ -7,4 +7,12 @@ function selectALL(){
     $posts = $results -> fetchAll();
     return $posts;
 }
+
+function selectOne($id){
+    global $pdo;
+    $query = $pdo->prepare('SELECT * FROM posts WHERE id= :post_id');
+    $query-> execute(array('post_id'=>$id));
+    $post = $query->fetch();
+    return $post;
+}
 ?>
