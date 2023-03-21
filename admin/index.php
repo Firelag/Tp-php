@@ -54,7 +54,7 @@ $posts = selectALL();
                                     <td><?= $post['title'] ?></td>
                                     <td><?= $post['author'] ?></td>
                                     <td><a href="edit.php?id=<?php echo $post['id'] ?>" class="edit">edit</a></td>
-                                    <td><a href="" class="delete">delete</a></td>  
+                                    <td><a href="edit.php?delete_id=<?= $post['id'] ?>" class="delete">delete</a></td>  
                                 </tr>
                                
                             <?php endforeach;?>

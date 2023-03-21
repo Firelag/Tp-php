@@ -50,13 +50,23 @@ function create($author,$title,$content,$image){
 //modifier un article
 function updatePost($id,$author,$title,$content,$image){
     global $pdo;
-    $query = $pdo->prepare('UPDATE posts SET author = :auteur, title=:titre, content=:content,image=:image WHERE id = :id');
+    $query = $pdo->prepare('UPDATE posts SET author = :auteur, title=:titre, content=:content,
+    image=:image WHERE id = :id');
     $query->execute([
         'auteur'=>$author,
         'titre'=>$title,
         'contenu'=>$content,
-        'image'=>$image
+        'image'=>$image,
+        'id'=>$id
     ]);
+}
+
+//supprimer un article
+function deletePost($id){
+    global $pdo;
+    $query = $pdo->prepare('DELETE FROM posts WHERE id =:id');
+    $query->execute(['id'=>$id]);
+
 }
 
 ?>

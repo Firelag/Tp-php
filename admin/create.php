@@ -6,6 +6,9 @@ $author='';
 $content='';
     if(isset($_POST['add-post'])){
         $errors = ValidatePost($_POST);
+
+
+        //Traitement de l'image
         if(!empty($_FILES['image']['name'])){
             $image_name = $_FILES['image']['name'];
             $destination = "../images/$image_name";
