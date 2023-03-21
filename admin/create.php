@@ -68,8 +68,8 @@ $content='';
             <!-- Admin Content -->
             <div class="admin-content">
                 <div class="button-group">
-                    <a href="create.html" class="btn btn-big">Ajout d'un article</a>
-                    <a href="index.html" class="btn btn-big">Gestion des articles</a>
+                    <a href="create.php" class="btn btn-big">Ajout d'un article</a>
+                    <a href="index.php" class="btn btn-big">Gestion des articles</a>
                 </div>
 
 

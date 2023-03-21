@@ -53,7 +53,7 @@ $posts = selectALL();
                                     <td><?= $key+1; ?></td>
                                     <td><?= $post['title'] ?></td>
                                     <td><?= $post['author'] ?></td>
-                                    <td><a href="" class="edit">edit</a></td>
+                                    <td><a href="edit.php?id=<?php echo $post['id'] ?>" class="edit">edit</a></td>
                                     <td><a href="" class="delete">delete</a></td>  
                                 </tr>
                                

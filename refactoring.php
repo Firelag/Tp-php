@@ -1,6 +1,8 @@
 <?php 
 require_once 'db.php';
 
+
+//Test de validité des champs
 function ValidatePost($post){
     $errors = array();
     if(empty($post['author'])){
@@ -16,6 +18,7 @@ function ValidatePost($post){
 
 }
 
+//Selection de 3 article
 function selectALL(){
     global $pdo;
     $results = $pdo -> query('SELECT * FROM posts ORDER BY created_at DESC LIMIT 0,3');
@@ -23,6 +26,7 @@ function selectALL(){
     return $posts;
 }
 
+//Selection d'un article
 function selectOne($id){
     global $pdo;
     $query = $pdo->prepare('SELECT * FROM posts WHERE id= :post_id');
@@ -31,6 +35,7 @@ function selectOne($id){
     return $post;
 }
 
+//Enregistrement d'un article grâce à son identifiant
 function create($author,$title,$content,$image){
     global $pdo;
     $query =$pdo->prepare('INSERT INTO posts(author,title,content,image,created_at) VALUES(:auteur,:titre,:contenu,:image,NOW())');
@@ -41,4 +46,17 @@ function create($author,$title,$content,$image){
         'image'=>$image
     ]);
 }
+
+//modifier un article
+function updatePost($id,$author,$title,$content,$image){
+    global $pdo;
+    $query = $pdo->prepare('UPDATE posts SET author = :auteur, title=:titre, content=:content,image=:image WHERE id = :id');
+    $query->execute([
+        'auteur'=>$author,
+        'titre'=>$title,
+        'contenu'=>$content,
+        'image'=>$image
+    ]);
+}
+
 ?>
