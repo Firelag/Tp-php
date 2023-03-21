@@ -80,5 +80,13 @@ function saveComment($auteur,$post_id,$comment){
         'comment'=>$comment
     ]);
 }
-
+//recuperation des articles dans la base
+function findAllComments($id_post){
+    global $pdo;
+    $query = $pdo->prepare('SELECT * FROM comments WHERE id_post= :post_id');
+    $query->execute(['post_id' =>$id_post]);
+    $comments = $query->fetchAll();
+    return $comments;
+    
+}
 ?>

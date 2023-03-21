@@ -3,6 +3,7 @@
 
   include_once('traitement.php');
   $post = selectOne($id);
+  $comments = findAllComments($id);
   
 
 
@@ -50,15 +51,16 @@
         
         <h1>Les commentaires</h1>
         <div class="comments">
-          
+          <?php foreach($comments as $comment): ?> 
             <div class="comment">
-              <h3 class="auteur"> </h3>
-              <p class="contenu" ><br>
-              <i class="far fa-calendar"></i>
+              <h3 class="auteur">Ecrit par <?= $comment['auteur']; ?> </h3>
+              <p class="contenu" > <?= $comment['comment']; ?> <br>
+              <i class="far fa-calendar"><?= date('d F,Y', strtotime($comment['created_at'])); ?> </i>
               <a class="sup" href="">Supprimer</a>
               </p>
               <br>
             </div>
+            <?php endforeach; ?> 
         </div>
         <br>
         <form action="single.php?id=<?=$id ?>"  method="post">
