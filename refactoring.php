@@ -55,7 +55,7 @@ function updatePost($id,$author,$title,$content,$image){
     $query->execute([
         'auteur'=>$author,
         'titre'=>$title,
-        'contenu'=>$content,
+        'content'=>$content,
         'image'=>$image,
         'id'=>$id
     ]);
