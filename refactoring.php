@@ -69,4 +69,16 @@ function deletePost($id){
 
 }
 
+//sauvergarder un comentaire
+function saveComment($auteur,$post_id,$comment){
+    global $pdo;
+    $query = $pdo->prepare('INSERT INTO comments(id_post,auteur,comment,created_at) 
+    VALUES(:id_post,:auteur,:comment,NOW())');
+    $query->execute([
+        'id_post'=>$post_id,
+        'auteur'=>$auteur,
+        'comment'=>$comment
+    ]);
+}
+
 ?>
