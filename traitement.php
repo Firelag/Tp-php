@@ -8,6 +8,15 @@
     die("L'article n'exsite pas");
   }
 
+//supprimer un commentaire
+
+if (isset($_GET['id_comment_delete'])) {
+  $id_com =$_GET['id_comment_delete'];
+  deleteComment($id_com);
+  header('Location:single.php?id='.$id);
+  exit();
+}
+
 //sauvegarde d'un commentaire
 if(isset($_POST['add-comment'])){
     if(!empty($_POST['auteur']) && !empty($_POST['comment'])){

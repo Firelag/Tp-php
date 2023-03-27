@@ -90,6 +90,15 @@ function saveComment($auteur,$post_id,$comment){
         'comment'=>$comment
     ]);
 }
+
+
+//supprimer un commentaire
+function deleteComment($id){
+    global $pdo;
+    $query = $pdo->prepare('DELETE FROM comments WHERE id = :id');
+    $query->execute(['id'=> $id]);
+
+}
 //recuperation des articles dans la base
 function findAllComments($id_post){
     global $pdo;

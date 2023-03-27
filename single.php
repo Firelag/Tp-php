@@ -5,6 +5,7 @@
   $post = selectOne($id);
   $comments = findAllComments($id);
   
+  
 
 
 ?>
@@ -56,7 +57,8 @@
               <h3 class="auteur">Ecrit par <?= $comment['auteur']; ?> </h3>
               <p class="contenu" > <?= $comment['comment']; ?> <br>
               <i class="far fa-calendar"><?= date('d F,Y', strtotime($comment['created_at'])); ?> </i>
-              <a class="sup" href="">Supprimer</a>
+              <a class="sup" href="single.php?id=<?php echo $id ?>&amp;id_comment_delete=<?php echo $comment['id']; ?>">Supprimer</a>
+              
               </p>
               <br>
             </div>
