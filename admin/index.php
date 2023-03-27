@@ -2,7 +2,17 @@
   
   
 require_once '../refactoring.php';
-$posts = selectALL();
+
+$perPage = 5;
+$nombreTotal= pagination() ;
+
+$noPage=1;
+$pages= ceil($nombreTotal/$perPage);
+
+if (isset($_GET['page'])){
+  $noPage = $_GET['page'];
+}
+$posts = selectALL($noPage,$perPage);
 
     
 
@@ -63,7 +73,18 @@ $posts = selectALL();
                 </div>
             </div>
         </div>
-        
+         <!-- pagination -->
+
+    <div class="pagination">
+        <?php 
+          for($i=1; $i<=$pages;$i++){?>
+          <a href="index.php?page=<?=$i ?>" class="page<?= ($noPage == $i)?'active':'' ?>"><?=$i ?></a>
+
+        <?php 
+          }
+        ?>
+
+    </div>
         <?php include('../inc/footer.php'); ?> 
 
 

@@ -19,9 +19,9 @@ function ValidatePost($post){
 }
 
 //Selection de 3 article
-function selectALL(){
+function selectALL($noPage,$perPage){
     global $pdo;
-    $results = $pdo -> query('SELECT * FROM posts ORDER BY created_at DESC LIMIT 0,3');
+    $results = $pdo -> query('SELECT * FROM posts ORDER BY created_at DESC LIMIT '. ($perPage*($noPage-1)).','.$perPage);
     $posts = $results -> fetchAll();
     return $posts;
 }
@@ -33,6 +33,16 @@ function selectOne($id){
     $query-> execute(array('post_id'=>$id));
     $post = $query->fetch();
     return $post;
+}
+
+//Selection de tous les articles
+function pagination(){
+    global $pdo;
+    $query = $pdo->prepare('SELECT COUNT(*) as nbr_articles FROM posts');
+    $query-> execute([]);
+    $nombre = $query->fetch();
+    return $nombre['nbr_articles'];
+
 }
 
 //Enregistrement d'un article grâce à son identifiant
@@ -87,6 +97,6 @@ function findAllComments($id_post){
     $query->execute(['post_id' =>$id_post]);
     $comments = $query->fetchAll();
     return $comments;
-    
+
 }
 ?>
